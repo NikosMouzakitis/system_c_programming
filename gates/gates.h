@@ -75,3 +75,25 @@ SC_MODULE(and3)
 	}
 };
 
+SC_MODULE(mux2)
+{
+	sc_in <sc_bit> i0;
+	sc_in <sc_bit> i1;
+	sc_in <sc_bit> s;
+	sc_out <sc_bit> o;
+
+	void prc_mux2_gt()
+	{
+		if( s == (sc_bit) 0 )
+			o = i0;
+		else
+			o = i1;
+	}
+
+	SC_CTOR(mux2)
+	{
+		SC_METHOD(prc_mux2_gt);
+		sensitive << i0 << i1 << s;
+	}
+
+};
