@@ -97,3 +97,22 @@ SC_MODULE(mux2)
 	}
 
 };
+
+SC_MODULE(Int_Adder)
+{
+	sc_in <int> i0;
+	sc_in <int> i1;
+	sc_out <int> o;
+
+	//perform addition
+	void prc_int_add()
+	{
+		o = i0+i1;
+	}
+
+	SC_CTOR(Int_Adder)
+	{
+		SC_METHOD(prc_int_add);
+		sensitive << i0 << i1;	
+	}
+};
